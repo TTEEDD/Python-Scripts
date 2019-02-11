@@ -11,7 +11,7 @@ def sendmessage(message):
 def whoisDsp():
 
     #Waiting for PC to boot up
-    # sleep(20)
+    sleep(20)
     now = datetime.now()
     domains = ['www.google.com', 'www.facebook.com', 'https://www.amazon.com/',
                'ebay.com', 'www.stackoverflow.com', 'https://www.yahoo.com/']
