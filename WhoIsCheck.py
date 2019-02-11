@@ -11,9 +11,10 @@ def sendmessage(message):
 def whoisDsp():
 
     #Waiting for PC to boot up
-    sleep(20)
+    # sleep(20)
     now = datetime.now()
-    domains = ['www.google.com', 'www.facebook.com', 'https://www.amazon.com/', 'ebay.com', 'www.stackoverflow.com', 'https://www.yahoo.com/']
+    domains = ['www.google.com', 'www.facebook.com', 'https://www.amazon.com/',
+               'ebay.com', 'www.stackoverflow.com', 'https://www.yahoo.com/']
 
     for doms in domains:
         # Getting WhoIs Information
@@ -32,8 +33,7 @@ def whoisDsp():
             expDate = date(int(expYear), int(expMonth), int(expDay))
             nowDate = date(int(now.year), int(now.month), int(now.day))
             dayremain = expDate - nowDate
-            dayremain = str(dayremain)
-            dayremain = dayremain[:4]
+            dayremain = str(dayremain.days)
 
         else:
             # Runs the code below if domain has only one expiration date
@@ -44,14 +44,13 @@ def whoisDsp():
             expDate = date(int(expYear), int(expMonth), int(expDay))
             nowDate = date(int(now.year), int(now.month), int(now.day))
             dayremain = expDate - nowDate
-            dayremain = str(dayremain)
-            dayremain = dayremain[:4]
+            dayremain = str(dayremain.days)
 
         # Would you like a desktop notification or Terminal Output. [True for Notification | False for Output]
-        sendNotification = False
+        sendNotification = True
 
         if(sendNotification == True):
-            sendmessage(doms + " || " + dayremain + " Days")
+            sendmessage("[" + doms + "] & [" + dayremain + " Days]")
         else:
             # Converts Expiration Date List to String if possible
             if isinstance(dexplist,(list,)):
